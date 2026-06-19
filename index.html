@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>ALLIANCE — клуб смешанных единоборств для детей и взрослых</title>
+<meta name="description" content="ALLIANCE — клуб смешанных единоборств в Севастополе. Бокс, тайский бокс, панкратион, грэпплинг для детей и взрослых. Развиваем силу, характер и дисциплину.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-bg:#080a0d;
+  --color-bg-elevated:#0f1217;
+  --color-surface:#141820;
+  --color-surface-hover:#191e27;
+  --color-border:rgba(255,255,255,.10);
+  --color-border-strong:rgba(255,255,255,.18);
+  --color-text:#f5f6f7;
+  --color-text-muted:#a6adb8;
+  --color-text-dim:#747d89;
+  --color-accent:#9aa1ad;
+  --color-accent-hover:#b6bcc6;
+  --color-accent-dark:#5b626d;
+  --shadow-soft:0 18px 60px rgba(0,0,0,.38);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --container:1280px;
+  --font-display:clamp(4.6rem,12.5vw,11rem);
+  --font-h1:clamp(3rem,7vw,6.5rem);
+  --font-h2:clamp(2rem,4vw,3.5rem);
+  --font-h3:clamp(1.25rem,2vw,1.75rem);
+  --font-body-lg:clamp(1.05rem,1.5vw,1.25rem);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--color-bg);
+  color:var(--color-text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,.display{font-family:'Oswald',sans-serif;text-transform:uppercase;line-height:1;font-weight:700;letter-spacing:.5px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:var(--container);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+section{position:relative}
+.muted{color:var(--color-text-muted)}
+
+/* ambient grey glow over the whole page */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 500px at 85% -5%,rgba(255,255,255,.16),transparent 60%),
+    radial-gradient(700px 600px at -10% 30%,rgba(255,255,255,.07),transparent 60%);
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- BUTTONS ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-weight:600;font-size:.98rem;letter-spacing:.3px;
+  padding:0 26px;height:54px;border-radius:10px;border:1px solid transparent;
+  cursor:pointer;transition:transform .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease);
+  white-space:nowrap;
+}
+.btn svg{width:20px;height:20px;flex:none;transition:transform .2s var(--ease)}
+.btn-primary{background:var(--color-accent);color:#0b0d11}
+.btn-primary:hover{background:var(--color-accent-hover);transform:translateY(-1px)}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-ghost{background:transparent;color:var(--color-text);border-color:var(--color-border-strong)}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:6px}
+
+/* ---------- HEADER ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(8,10,13,.72);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.site-header.scrolled{border-bottom-color:var(--color-border);background:rgba(8,10,13,.9)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;height:78px}
+.logo{display:flex;align-items:center;gap:14px}
+.logo img{width:48px;height:48px;border-radius:50%}
+.logo .wordmark{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.55rem;letter-spacing:1px;line-height:1}
+.logo .wordmark .r{color:var(--color-accent)}
+.logo .sub{display:block;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.06rem;letter-spacing:1px;line-height:1.12;color:var(--color-text-muted);margin-top:5px}
+.nav-desktop{display:flex;align-items:center;gap:34px}
+.nav-desktop a{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:.92rem;letter-spacing:1px;color:var(--color-text-muted);transition:color .2s}
+.nav-desktop a:hover{color:#fff}
+.header-cta{display:flex;align-items:center;gap:16px}
+.header-cta .btn{height:46px}
+.burger{display:none;width:46px;height:46px;border:1px solid var(--color-border-strong);border-radius:10px;background:transparent;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{width:20px;height:2px;background:#fff;transition:.25s var(--ease)}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* mobile menu */
+.nav-mobile{
+  position:fixed;inset:78px 0 auto 0;z-index:49;
+  background:rgba(8,10,13,.98);border-bottom:1px solid var(--color-border);
+  padding:18px 0 26px;display:none;flex-direction:column;
+}
+.nav-mobile.open{display:flex;animation:fade .25s var(--ease)}
+.nav-mobile a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:1.05rem;padding:14px clamp(20px,4vw,48px);color:var(--color-text)}
+.nav-mobile a:hover{background:rgba(255,255,255,.05)}
+.nav-mobile .btn{margin:14px clamp(20px,4vw,48px) 0;justify-content:center}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(56px,8vw,96px) 0 clamp(48px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,4vw,56px);align-items:center}
+.eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.85rem;color:var(--color-accent);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--color-accent)}
+.hero h1{font-size:var(--font-display);letter-spacing:1px}
+.hero h1 .r{color:var(--color-accent)}
+.hero .tagline{font-family:'Oswald',sans-serif;text-transform:uppercase;font-size:var(--font-h3);letter-spacing:2px;color:#fff;margin-top:10px}
+.hero p.lead{font-size:var(--font-body-lg);color:var(--color-text-muted);max-width:50ch;margin:24px 0 34px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+/* hero visual composite */
+.hero-media{
+  position:relative;aspect-ratio:4/5;border-radius:var(--radius-lg);
+  overflow:hidden;border:1px solid var(--color-border);
+  background:
+    radial-gradient(120% 90% at 70% 20%,rgba(255,255,255,.32),transparent 55%),
+    radial-gradient(100% 100% at 50% 120%,rgba(255,255,255,.12),transparent 60%),
+    linear-gradient(160deg,#15181f,#0a0c10 70%);
+  box-shadow:var(--shadow-soft);
+}
+.hero-media .octagon{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-media .octagon svg{width:118%;height:118%;opacity:.5}
+.hero-media .watermark{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+}
+.hero-media .watermark img{width:62%;border-radius:50%;opacity:.16;filter:grayscale(1) contrast(1.1) brightness(1.4)}
+.hero-media .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:2}
+.hero-media .grad-bottom{position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(8,10,13,.85),transparent);z-index:3;pointer-events:none}
+.hero-media .hero-chips{position:absolute;left:18px;right:18px;bottom:18px;z-index:4;display:flex;flex-wrap:wrap;gap:9px}
+.hero-media .hero-chips span{display:inline-flex;align-items:center;gap:7px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-size:.7rem;color:var(--color-text);background:rgba(8,10,13,.5);backdrop-filter:blur(6px);border:1px solid var(--color-border-strong);border-radius:999px;padding:8px 14px}
+.hero-media .hero-chips span b{font-size:.95rem;color:#fff;font-weight:700;line-height:1}
+
+/* ---------- SECTION HEADINGS ---------- */
+.section{padding:clamp(56px,9vw,128px) 0}
+.section-head{margin-bottom:clamp(32px,4vw,56px)}
+.section-head .kicker{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.82rem;color:var(--color-accent);font-weight:600;margin-bottom:14px}
+.section-head h2{font-size:var(--font-h2)}
+.section-head h2 .r{color:var(--color-accent)}
+.section-head p{color:var(--color-text-muted);max-width:60ch;margin-top:14px;font-size:var(--font-body-lg)}
+
+/* ---------- DIRECTIONS ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:linear-gradient(160deg,var(--color-surface),var(--color-bg-elevated));
+  border:1px solid var(--color-border);border-radius:var(--radius-md);
+  padding:30px 26px;transition:transform .25s var(--ease),border-color .25s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--color-border-strong)}
+.card .ic{
+  width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);color:var(--color-accent);margin-bottom:20px;
+}
+.card .ic svg{width:30px;height:30px;fill:currentColor}
+.card h3{font-size:1.3rem;letter-spacing:1px;margin-bottom:10px}
+.card p{color:var(--color-text-muted);font-size:.96rem}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.about-text h2{font-size:var(--font-h2);margin-bottom:22px}
+.about-text h2 .r{color:var(--color-accent)}
+.about-text p{color:var(--color-text-muted);font-size:var(--font-body-lg);margin-bottom:16px;max-width:56ch}
+.adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.adv{
+  background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);
+  padding:24px;transition:transform .25s var(--ease),border-color .25s var(--ease);
+}
+.adv:hover{transform:translateY(-3px);border-color:var(--color-border-strong)}
+.adv .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);color:var(--color-accent);margin-bottom:16px}
+.adv .ic svg{width:24px;height:24px}
+.adv h3{font-size:1.12rem;letter-spacing:1px;margin-bottom:8px}
+.adv p{color:var(--color-text-muted);font-size:.92rem}
+
+/* ---------- CTA BAND ---------- */
+.cta-band{
+  border-radius:var(--radius-lg);overflow:hidden;position:relative;
+  border:1px solid var(--color-border);
+  background:
+    radial-gradient(120% 160% at 80% 0%,rgba(255,255,255,.30),transparent 55%),
+    linear-gradient(120deg,#15181f,#0a0c10);
+  padding:clamp(40px,6vw,72px);text-align:center;
+}
+.cta-band h2{font-size:var(--font-h2);margin-bottom:16px}
+.cta-band p{color:var(--color-text-muted);font-size:var(--font-body-lg);max-width:48ch;margin:0 auto 30px}
+.cta-band .btn{height:58px;font-size:1.05rem}
+
+/* ---------- CONTACTS ---------- */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
+.contact-item{display:flex;gap:16px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--color-border)}
+.contact-item:last-child{border-bottom:none}
+.contact-item .ic{width:48px;height:48px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.28);color:var(--color-accent)}
+.contact-item .ic svg{width:24px;height:24px}
+.contact-item .label{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.74rem;color:var(--color-text-dim);margin-bottom:4px}
+.contact-item .value{font-size:1.2rem;font-weight:600;color:#fff}
+.contact-item .value:hover{color:var(--color-accent-hover)}
+.map-card{
+  border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;min-height:280px;
+  background:linear-gradient(160deg,var(--color-surface),var(--color-bg-elevated));
+}
+.map-card iframe{width:100%;height:100%;min-height:280px;border:0;filter:grayscale(.4) invert(.92) hue-rotate(180deg) contrast(.9)}
+
+/* ---------- FOOTER ---------- */
+.site-footer{border-top:1px solid var(--color-border);padding:clamp(48px,6vw,72px) 0 32px;margin-top:clamp(40px,5vw,64px)}
+.footer-grid{display:grid;grid-template-columns:1.5fr .9fr .9fr 1.1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo{margin-bottom:18px}
+.footer-brand p{color:var(--color-text-muted);max-width:38ch;font-size:.95rem}
+.socials{display:flex;flex-direction:column;gap:12px}
+.social-link{display:inline-flex;align-items:center;gap:11px;color:var(--color-text-muted);font-size:.95rem;transition:color .2s}
+.social-link:hover{color:#fff}
+.social-link .ic{width:38px;height:38px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--color-border-strong);transition:border-color .2s,background .2s}
+.social-link:hover .ic{border-color:#fff;background:rgba(255,255,255,.12)}
+.social-link .ic svg{width:20px;height:20px}
+.social-link small{display:block;color:var(--color-text-dim);font-size:.78rem}
+.footer-col h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:.82rem;color:var(--color-text-dim);margin-bottom:18px}
+.footer-col a,.footer-col p{display:block;color:var(--color-text-muted);font-size:.98rem;margin-bottom:12px;transition:color .2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid var(--color-border);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--color-text-dim);font-size:.86rem}
+.footer-bottom .r{color:var(--color-accent)}
+
+/* ---------- ТРЕНЕРЫ ---------- */
+.coaches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.coach{background:linear-gradient(160deg,var(--color-surface),var(--color-bg-elevated));border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s var(--ease),border-color .25s var(--ease)}
+.coach:hover{transform:translateY(-4px);border-color:var(--color-border-strong)}
+.coach .ph{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 18%;filter:grayscale(.2) contrast(1.02)}
+.coach .ph.mono{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a1f28,#0d1014)}
+.coach .ph.mono svg{width:44%;height:44%;color:var(--color-text-dim);opacity:.6}
+.coach .body{padding:20px;display:flex;flex-direction:column}
+.coach .spec{align-self:flex-start;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:.66rem;color:var(--color-accent);border:1px solid var(--color-border-strong);border-radius:999px;padding:4px 10px;margin-bottom:12px}
+.coach h3{font-size:1.08rem;letter-spacing:.5px;line-height:1.15;margin-bottom:12px}
+.coach ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.coach li{position:relative;padding-left:16px;color:var(--color-text-muted);font-size:.83rem;line-height:1.4}
+.coach li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--color-accent)}
+
+/* ---------- РАСПИСАНИЕ (вкладки по направлениям) ---------- */
+.sched-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.sched-tab{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.8px;font-size:.86rem;color:var(--color-text-muted);background:var(--color-surface);border:1px solid var(--color-border);border-radius:12px;padding:11px 18px;cursor:pointer;transition:color .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease)}
+.sched-tab .t-ic{width:22px;height:22px;flex:none;fill:currentColor;opacity:.85}
+.sched-tab:hover{color:#fff;border-color:var(--color-border-strong)}
+.sched-tab.active{color:#0b0d11;background:var(--color-accent);border-color:var(--color-accent)}
+.sched-tab.active .t-ic{opacity:1}
+.sched-tab:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.sched-panel{display:none}
+.sched-panel.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:16px;animation:fade .35s var(--ease)}
+.ses{background:linear-gradient(160deg,var(--color-surface),var(--color-bg-elevated));border:1px solid var(--color-border);border-radius:var(--radius-md);padding:18px 20px;transition:transform .25s var(--ease),border-color .25s var(--ease)}
+.ses:hover{transform:translateY(-3px);border-color:var(--color-border-strong)}
+.ses-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--color-border)}
+.ses-age{font-family:'Oswald',sans-serif;font-size:1.08rem;letter-spacing:.5px;color:#fff;text-transform:uppercase;line-height:1.1}
+.ses-age small{display:block;text-transform:none;font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:0;color:var(--color-text-dim);margin-top:3px}
+.ses-tag{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:.6rem;color:var(--color-text-muted);background:rgba(255,255,255,.04);border:1px solid var(--color-border-strong);border-radius:999px;padding:4px 9px;white-space:nowrap;flex:none}
+.ses-slots{display:flex;flex-direction:column;gap:9px}
+.ses-slot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.ses-slot .days{display:flex;gap:4px}
+.ses-slot .days i{font-style:normal;font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.5px;text-transform:uppercase;color:var(--color-text);background:rgba(255,255,255,.06);border:1px solid var(--color-border);border-radius:6px;padding:3px 7px;line-height:1.3}
+.ses-slot .hrs{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;color:#fff;letter-spacing:.5px;background:rgba(255,255,255,.07);border:1px solid var(--color-border-strong);border-radius:8px;padding:4px 11px;white-space:nowrap}
+.sched-note{margin-top:26px;color:var(--color-text-dim);font-size:.88rem;display:flex;align-items:center;gap:10px}
+.sched-note svg{width:20px;height:20px;flex:none;color:var(--color-accent)}
+
+/* ---------- REVEAL ANIM ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1024px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:880px){
+  .nav-desktop{display:none}
+  .header-cta .btn{display:none}
+  .burger{display:flex}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-media{order:-1;aspect-ratio:16/12;max-height:420px}
+  .about-grid{grid-template-columns:1fr}
+  .contacts-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .adv-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .footer-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= ICON SPRITE (game-icons.net, CC BY 3.0) ================= -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <symbol id="ic-boxing" viewBox="0 0 512 512"><path d="M141.977 56.943c-.635.004-1.27.02-1.905.053-2.903.145-5.805.58-8.7 1.326-28.33 7.294-56.425 29.248-77.058 57.844-20.632 28.596-33.67 63.593-33.554 95.455.06 16.533 6.94 27.84 18.886 36.927 7.29 5.544 16.59 9.97 27.032 13.23-1.023-14.32-.482-29.776 3.957-42.71l16.844 5.783c-15.886 57.862 18.713 102.134 69.65 142.007-2.305-28.866 2.355-59.986 15.7-91.345-1.265-7.76-1.14-16.392.57-25.664 4.65-25.21 20.01-56.115 49.88-93.414l14.59 11.68c-28.65 35.777-42.302 64.575-46.09 85.122-3.79 20.548 1.342 31.848 10.048 38.176 8.706 6.328 23.24 8.047 40.315 2.526 17.073-5.522 36.13-18.136 52.42-38.405 40.154-49.957 56.8-91.026 58.064-120.484 1.265-29.46-11.115-47.414-32.752-56.937C276.602 59.067 191.21 80.82 119.7 162.938l-14.095-12.272c26.81-30.786 55.632-54.11 84.143-70.29-15.18-14.578-31.464-23.538-47.77-23.433zm230.76 85.89c-.65-.005-1.303.005-1.956.01-3.553 34.283-22.66 75.888-61.65 124.397-18.358 22.844-40.163 37.666-61.237 44.48-21.075 6.816-41.974 5.77-57.053-5.19-2.737-1.99-5.203-4.298-7.387-6.887-20.753 63.805-2.12 122.793 34.906 158.587 25.613 24.76 60.005 38.354 97.472 34.727 37.467-3.627 78.5-24.527 116.943-70.998 84.462-102.102 71.214-199.61 19.823-247.646-21.08-19.702-48.703-31.302-79.862-31.482z"/></symbol>
+  <symbol id="ic-kick" viewBox="0 0 512 512"><path d="M117.842 26.268a15.25 15.25 0 0 0-4.418.76c-5.625 1.858-10.165 7.048-12.6 15.701-2.435 8.653-2.255 20.27 1.668 32.045 3.923 11.775 10.754 21.198 17.9 26.686 7.147 5.488 13.9 6.946 19.526 5.088 5.625-1.858 10.163-7.046 12.597-15.7 2.435-8.653 2.256-20.271-1.668-32.046-3.923-11.776-10.753-21.196-17.9-26.684-5.36-4.116-10.498-5.966-15.105-5.85zm183.933 12.373c-3.461.157-6.505 1.749-8.25 5.344L279.89 68.73l-26.733 32.309s-53.832-9.528-72.039-6.863a518.655 518.655 0 0 0-11.318 1.767c-3.614 12.656-11.809 23.592-24.192 27.682-11.513 3.803-23.674.702-33.761-6.178-4.565 3.511-8.787 7.581-12.557 12.33-18.674 14.66-26.385 24.747-42.1 34.92 3.083-14.864 10.683-29.677 19.026-41.879 1.37-2.003 11.495-10.555 12.888-12.406 7.48-14.706-8.464-41.216-23.476-15.86-1.425 1.979-7.346 18.877-8.817 21.096-14.574 28.867-23.676 47.817-15.474 76.325 2.756 9.578 30.91-4.905 55.23-22.159 26.469 37.34 59.364 48.604 78.373 63.078-23.266 83.384 10.267 147.263 29.276 207.721l-29.149 36.086c-8.868 10.627 48.711 13.113 52.412.75l7.71-33.84c-28.831-90.508-3.142-157.686 17.62-207.722 55.208-59.043 115.23-82.304 168.9-128.791l45.302-9.635c10.848-19.916 10.236-29.748-13.854-30.697l-44.924 17.595c-56.586 31.807-146.01 53.348-186.496 97.99-.897-14.045-17.4-47.3-20.902-58.437 19.373 2.573 45.668 4.223 60.642-2.682 16.005-7.38 33.63-40.796 33.63-40.796l19.663-14.551c17.065-10.058-.63-27.798-12.994-27.24z"/></symbol>
+  <symbol id="ic-kimono" viewBox="0 0 512 512"><path d="M192 24l-9.617 9.617c.586.598 1.085 1.276 1.484 2.012l72.596 130.67L328.11 35.673c.128-.237.266-.467.415-.692L320 24c-32 23.71-96 21.265-128 0zm-22.62 22.62L160 56c-16 0-48 16-64 32L16 248l80 48 48-112-9.158 87h64.195l47.195-86.05zm171.155 3.827L228.342 255H297v16h80.158L368 184l48 112 80-48-80-160c-13.322-12.132-48-32-71.154-32zM129.578 321l-9.982 94.84L171.613 321zm62.565 0l-76.868 135.88C114.277 458.763 112 488 112 488h288l-17.578-167h-79.86l48 96h-52.125L256 332.127 213.562 417h-52.087c15.955-32.003 31.827-64.05 47.884-96z"/></symbol>
+  <symbol id="ic-mma" viewBox="0 0 512 512"><path d="M227.227 21.777c-1.845 0-3.704.05-5.567.157-15.314.875-30.76 5.305-39.494 10.863l-.008 73.15c2.884-.094 5.777-.147 8.676-.142 23.382.036 47.104 3.286 68.47 9.513l.01-87.507c-7.034-3.518-19.178-6.03-32.087-6.033zm80.74 9.16c-11.925.15-23.077 2.364-29.967 5.596l-.008 77.602v7.658c38.486 15.67 64.814 42.48 58.735 78.764l-.96 5.73-5.562 1.674c-17.45 5.253-34.872 9.703-52.225 13.335V246.53c25.562-.704 51.327-2.687 77.145-6.098l.02-197.928c-8.284-5.563-23.508-10.243-38.842-11.328-2.792-.198-5.584-.273-8.336-.238zM143.223 46.294c-1.176-.015-2.374-.01-3.588.02-4.175.1-8.533.468-12.903 1.152-15.67 2.454-31.477 8.565-40.406 15.402l-.01 72.955c18.808-15.81 46.704-25.143 77.15-28.54l.007-57.966c-4.82-1.752-12.018-2.916-20.25-3.023zm258.394 3.46c-10.804.117-20.722 1.93-27.043 4.655l-.02 183.182c25.074-4.02 50.16-9.412 75.122-16.358l1.99-158.447c-8.352-5.9-23.648-11.025-39.05-12.553-3.698-.366-7.398-.517-11-.478zm-222.775 74.202c-53.72.702-101.407 20.365-97.887 66.6 15.836-3.918 30.84-5.893 44.94-6.1 34.84-.51 64.213 9.704 87.318 27.613 34.608-3.11 69.852-10 105.412-20.314.14-41.287-74.098-68.657-139.783-67.8zm-48.877 78.65c-1.296-.003-2.603.012-3.92.045-17.256.436-36.45 4.03-57.566 11.037 5.79 53.808 26.325 106.41 58.5 143.346 6.226 7.15 12.856 13.712 19.875 19.615 29.303 9.282 69.26 12.917 110.534 12.14 3.777-55.805-8.717-108.357-36.193-142.74-21.265-26.61-51.064-43.39-91.232-43.444zm129.326 22.282c-9.358 1.637-18.69 3.016-27.995 4.15 1.54 1.74 3.043 3.52 4.502 5.346 3.146 3.937 6.094 8.062 8.873 12.334 9.916.144 19.868.125 29.857-.106H259.29v-21.723zm191.817 15.343c-65.406 17.826-131.462 25.41-195.85 25.315 16.998 35.144 23.828 78.093 21.013 122.6 42.482-2.08 85.03-8.23 118.187-15.983 26.693-32.78 47.37-77.118 56.65-131.932zM400.51 389.9c-38.334 9.145-87.95 16.056-136.873 17.454-47.67 1.36-94.336-2.228-129.448-15.262l-.01 78.93c27.187 12.568 76.414 20.205 127.318 20.298 51.224.094 104.214-7.173 139-20.773l.012-80.647z"/></symbol>
+  <symbol id="ic-combat" viewBox="0 0 512 512"><path d="M91.773 25.994C189.313 167.854 104.52 157.17 65.64 169.2c38.8 52.918 16.554 102.644-44.503 133.788 52.5 21.085 122.25 30.452 42.027 141.707 79.578-45.024 134.707-48.82 127.13 53.15 57.795-58.495 133.043-87.973 208.054-38.53-8.558-73.916 12.66-106.284 86.88-74.4-79.58-73.01-46.696-116.363.458-158.83-81.492-3.232-92.92-65.497-89.922-139.92-49.183 53.518-86.497 47.756-104.002-56.962-33.806 76.857-79.335 125.91-199.99-3.21zM202.15 135.336c16.1.356 25.565 12.198 34.666 24.678L177.312 263.08c-20.422 1.985-35.31-4.577-41.787-24.123l59.51-103.074c1.93-.326 3.772-.503 5.537-.545.534-.013 1.06-.014 1.578-.002zm69.037 11.197c16.1.352 25.567 12.2 34.668 24.676L238.947 290.24c-20.423 1.985-35.31-4.586-41.785-24.127l66.91-119.03c1.93-.327 3.772-.507 5.537-.55.533-.013 1.058-.013 1.577-.002zm58.704 32.05c16.102.357 25.567 12.198 34.67 24.673l-65.945 117.547c-20.423 1.98-35.31-4.58-41.783-24.123l65.94-117.55c1.93-.325 3.773-.502 5.54-.544.532-.013 1.06-.013 1.58-.002zm46.342 55.233c16.773.098 26.746 11.977 36.354 24.485l-55.557 96.227c-20.026 1.297-34.856-5.367-41.786-24.125l55.56-96.224c1.887-.255 3.693-.372 5.428-.362zM127.55 271.713l105.83 47.52c3.015 21.69-2.782 38.788-21.958 48.91L105.588 320.62c-4.508-21.618 8.273-35.485 21.96-48.907z"/></symbol>
+  <symbol id="ic-grapple" viewBox="0 0 512 512"><path d="M312.1 21.13c-11.6 0-24.5 9.6-30 26.05-6.5 19.5 1.1 37.61 13.9 41.91 12.8 4.2 29.8-5.6 36.4-25.1 6.5-19.5-1.2-37.59-14-41.87-2-.67-4.1-.99-6.3-.99zM198.4 66.74c-29.5 22.35-47.8 40.16-66.1 63.26-8 11.5 12.3 32.2 26.5 19.2l44.6-43.7 37.7 7.1c-22.6 46.3-37.4 83.3-81.3 113.6-22.9.5-43.2-6.6-63.82-12.6-16.71-4.7-26.86 28.1-10.84 33.5 28.26 11.4 58.66 19.9 92.36 23.8 62.5-49.6 105-83.6 211.6.8 15.4 10 31.2-19.8 26-24.9l-78.2-61.9c-10.1-6.7-33.1-5.6-50.2-7.9 12.4-15.4 18.8-28.7 25.2-42.2 19.4 8.8 47.9 20 58.3 18.3 24.6-18.4 45.6-35.4 64.6-54.41 9.2-11.46-14.7-33.2-23.7-25.08L362 115.5c-10.6-6.3-21.8-11.6-33.6-16.41-11.1 8.21-24.8 11.51-38.1 7.01-12.5-4.2-21.2-14.11-25.5-26.31-21.5-4.99-43.8-9.07-66.4-13.05zm119 212.86c-2.4 0-4.9.1-7.4.5-20.4 2.9-33.1 17.9-31.2 31.2 1.9 13.4 18.3 24.2 38.7 21.3 20.4-2.9 33.1-17.8 31.2-31.2-1.7-11.7-14.4-21.5-31.3-21.8zm-185.5 115c-1.2 29.4 17.7 28.6 62.6 26.4l-44.4 42.1c-9 9.3 13.6 28.4 24.7 23.7l89.9-73c7.4 45.3 8.4 46.4 11.9 58.8 3.8 13.3 28.7 8.8 26.6-1.6-4.6-23.7-9.4-81.7-19.4-123.1-14.4-5.9-20.6-18.7-22.8-34-1-7.1-.1-13.9 2.5-20.2-47.3 4.1-123.2 59.1-131.6 100.9zM257.4 361l4.1 27.6-45-3.7z"/></symbol>
+</svg>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="ALLIANCE — на главную">
+      <img src="assets/logo.jpg" alt="Логотип клуба ALLIANCE">
+      <span>
+        <span class="wordmark">ALLI<span class="r">ANCE</span></span>
+        <span class="sub">клуб смешанных<br>единоборств</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Основная навигация">
+      <a href="#directions">Направления</a>
+      <a href="#coaches">Тренеры</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#about">О клубе</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <div class="header-cta">
+      <a class="btn btn-primary" href="tel:+79786986170">Записаться на тренировку</a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-mobile" id="navMobile" aria-label="Мобильная навигация">
+  <a href="#directions">Направления</a>
+  <a href="#coaches">Тренеры</a>
+  <a href="#schedule">Расписание</a>
+  <a href="#about">О клубе</a>
+  <a href="#contacts">Контакты</a>
+  <a class="btn btn-primary" href="tel:+79786986170">Записаться на тренировку</a>
+</nav>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow">Клуб смешанных единоборств</div>
+        <h1>ALLI<span class="r">ANCE</span></h1>
+        <div class="tagline">Для детей и взрослых</div>
+        <p class="lead">Развиваем силу, характер и дисциплину. Помогаем становиться увереннее — в спорте и в жизни.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+79786986170">
+            Записаться на тренировку
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#about">Подробнее о клубе</a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <!-- Композит-заглушка. Чтобы поставить реальное фото бойца —
+             положите файл assets/hero-fighter.jpg, он подхватится автоматически. -->
+        <div class="octagon" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="1">
+            <polygon points="59,12 141,12 188,59 188,141 141,188 59,188 12,141 12,59"/>
+            <polygon points="72,40 128,40 160,72 160,128 128,160 72,160 40,128 40,72"/>
+            <polygon points="85,68 115,68 132,85 132,115 115,132 85,132 68,115 68,85" stroke="rgba(255,255,255,.30)"/>
+          </svg>
+        </div>
+        <div class="watermark" aria-hidden="true"><img src="assets/logo.jpg" alt=""></div>
+        <img class="photo" id="heroPhoto" src="assets/hero-fighter.jpg" alt="Боец клуба ALLIANCE" style="display:none">
+        <div class="grad-bottom" aria-hidden="true"></div>
+        <div class="hero-chips">
+          <span><b>6</b> направлений</span>
+          <span>Дети и взрослые</span>
+          <span>Тренеры — мастера спорта</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= НАПРАВЛЕНИЯ ================= -->
+  <section class="section" id="directions">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Чем занимаемся</div>
+        <h2>Направления <span class="r">тренировок</span></h2>
+        <p>Выбирай дисциплину под свои цели — от первого занятия до уверенного уровня. Группы для детей и взрослых.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-boxing"/></svg></div>
+          <h3>Бокс</h3>
+          <p>Постановка ударов, работа на лапах и в спаррингах.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-kick"/></svg></div>
+          <h3>Тайский бокс</h3>
+          <p>Удары руками, ногами, коленями и локтями.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-mma"/></svg></div>
+          <h3>Панкратион</h3>
+          <p>Смешанный стиль: борьба и ударная техника.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-grapple"/></svg></div>
+          <h3>Грэпплинг</h3>
+          <p>Борьба в партере, контроль и болевые приёмы.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-kimono"/></svg></div>
+          <h3>Дзюдо</h3>
+          <p>Броски, удержания и работа в захвате.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ic"><svg viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-combat"/></svg></div>
+          <h3>Рукопашный бой</h3>
+          <p>Прикладная техника защиты и нападения.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ТРЕНЕРЫ ================= -->
+  <section class="section" id="coaches" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Команда</div>
+        <h2>Наши <span class="r">тренеры</span></h2>
+        <p>Профессионалы с высшим спортивным образованием и званием мастера спорта. Готовят и детей, и взрослых — от первых шагов до соревнований.</p>
+      </div>
+      <div class="coaches-grid">
+
+        <article class="coach reveal">
+          <img class="ph" src="assets/trainers/grin.jpeg" alt="Тренер Дмитрий Гринь — дзюдо" loading="lazy">
+          <div class="body">
+            <span class="spec">Дзюдо</span>
+            <h3>Гринь Дмитрий Сергеевич</h3>
+            <ul>
+              <li>Мастер спорта по дзюдо</li>
+              <li>Участник чемпионата мира</li>
+              <li>11 лет тренерского опыта</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="coach reveal">
+          <img class="ph" src="assets/trainers/voronov.jpg" alt="Тренер Максим Воронов — тайский бокс" loading="lazy">
+          <div class="body">
+            <span class="spec">Тайский бокс</span>
+            <h3>Воронов Максим Сергеевич</h3>
+            <ul>
+              <li>Мастер спорта</li>
+              <li>Обладатель Кубка мира по кикбоксингу (2008)</li>
+              <li>Чемпион Европы PRO-AM</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="coach reveal">
+          <img class="ph" src="assets/trainers/genko.jpeg" alt="Тренер Владимир Генко — панкратион и грэпплинг" loading="lazy">
+          <div class="body">
+            <span class="spec">Панкратион · Грэпплинг</span>
+            <h3>Генко Владимир Игоревич</h3>
+            <ul>
+              <li>Мастер спорта РФ по панкратиону</li>
+              <li>КМС по грэпплингу и рукопашному бою</li>
+              <li>Бронзовый призёр чемпионата мира</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="coach reveal">
+          <img class="ph" src="assets/trainers/petrosyan.jpeg" alt="Тренер Артур Петросян — рукопашный бой и панкратион" loading="lazy">
+          <div class="body">
+            <span class="spec">Рукопашный бой · Панкратион</span>
+            <h3>Петросян Артур Ашотович</h3>
+            <ul>
+              <li>КМС по рукопашному бою и панкратиону</li>
+              <li>Призёр чемпионатов России (2006, 2007)</li>
+              <li>Высшее образование</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="coach reveal">
+          <img class="ph" src="assets/trainers/oganyan.jpg" alt="Тренер Зограб Оганян — панкратион и грэпплинг" loading="lazy">
+          <div class="body">
+            <span class="spec">Панкратион · Грэпплинг</span>
+            <h3>Оганян Зограб Робертович</h3>
+            <ul>
+              <li>Профессиональный ММА: 8–0</li>
+              <li>МС по спортивной борьбе и комплексному единоборству</li>
+              <li>Фиолетовый пояс BJJ</li>
+              <li>Чемпион России, призёр чемпионатов мира и Европы</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= РАСПИСАНИЕ ================= -->
+  <section class="section" id="schedule" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Когда тренируемся</div>
+        <h2>Расписание</h2>
+        <p>Группы для детей и взрослых по всем направлениям. Точное время и запись — по телефону, расписание может меняться.</p>
+      </div>
+      <div class="sched-tabs reveal" role="tablist" aria-label="Направления расписания">
+        <button class="sched-tab active" data-disc="d0" role="tab"><svg class="t-ic" viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-kimono"/></svg><span>Дзюдо</span></button>
+        <button class="sched-tab" data-disc="d1" role="tab"><svg class="t-ic" viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-mma"/></svg><span>Панкратион · Грэпплинг</span></button>
+        <button class="sched-tab" data-disc="d2" role="tab"><svg class="t-ic" viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-kick"/></svg><span>Тайский бокс</span></button>
+        <button class="sched-tab" data-disc="d3" role="tab"><svg class="t-ic" viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-combat"/></svg><span>Рукопашный бой</span></button>
+        <button class="sched-tab" data-disc="d4" role="tab"><svg class="t-ic" viewBox="0 0 512 512" aria-hidden="true"><use href="#ic-boxing"/></svg><span>Бокс</span></button>
+      </div>
+
+      <div class="sched-panels reveal">
+
+        <div class="sched-panel active" data-disc="d0" role="tabpanel">
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 5–9 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">17:00–18:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 9–16 лет<small>вторая смена</small></span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">09:00–10:30</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 10–16 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">15:30–17:00</span></div></div></article>
+        </div>
+
+        <div class="sched-panel" data-disc="d1" role="tabpanel">
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 4–6 лет<small>ОФП</small></span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">17:00–17:45</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">16:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 5–7 лет<small>ОФП</small></span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">16:50–17:50</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">10:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 7–10 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">16:20–17:45</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 7–12 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">18:00</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">17:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Юноши 11–16 лет</span><span class="ses-tag">Юноши</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">18:00–19:30</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">11:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Взрослые 15+</span><span class="ses-tag">Взрослые</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">19:30–21:00</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">18:30</span></div></div></article>
+        </div>
+
+        <div class="sched-panel" data-disc="d2" role="tabpanel">
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 6–14 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">18:00–19:30</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Взрослые 14+</span><span class="ses-tag">Взрослые</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">19:30–21:00</span></div></div></article>
+        </div>
+
+        <div class="sched-panel" data-disc="d3" role="tabpanel">
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 3,5–6 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">17:30</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">09:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 7–12 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">18:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети 11–15 лет</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Пн</i><i>Ср</i><i>Пт</i></span><span class="hrs">19:00</span></div></div></article>
+        </div>
+
+        <div class="sched-panel" data-disc="d4" role="tabpanel">
+          <article class="ses"><div class="ses-head"><span class="ses-age">Дети и юноши 7+</span><span class="ses-tag">Дети</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i></span><span class="hrs">16:00</span></div><div class="ses-slot"><span class="days"><i>Сб</i></span><span class="hrs">09:00</span></div></div></article>
+          <article class="ses"><div class="ses-head"><span class="ses-age">Взрослые<small>вторая смена</small></span><span class="ses-tag">Взрослые</span></div><div class="ses-slots"><div class="ses-slot"><span class="days"><i>Вт</i><i>Чт</i><i>Сб</i></span><span class="hrs">09:00</span></div></div></article>
+        </div>
+
+      </div>
+      <p class="sched-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+        Точное время и набор в группы уточняйте по телефону <a href="tel:+79786986170" style="color:#fff">8 978 698-61-70</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= О КЛУБЕ + ПРЕИМУЩЕСТВА ================= -->
+  <section class="section" id="about" style="padding-top:0">
+    <div class="container about-grid">
+      <div class="about-text reveal">
+        <div class="kicker" style="font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:3px;font-size:.82rem;color:var(--color-accent);font-weight:600;margin-bottom:14px">О клубе</div>
+        <h2>ALLIANCE — <span class="r">больше, чем спорт</span></h2>
+        <p>Мы объединяем людей, которые хотят становиться сильнее, дисциплинированнее и увереннее. Тренировки одинаково подходят детям и взрослым — у каждого свой темп и своя цель.</p>
+        <p>Здесь учат не только технике ударов и борьбы, но и характеру: уважению, упорству и умению держать удар — в зале и за его пределами.</p>
+      </div>
+
+      <div class="adv-grid">
+        <div class="adv reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg></div>
+          <h3>Дисциплина</h3>
+          <p>Формируем характер и силу воли.</p>
+        </div>
+        <div class="adv reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div>
+          <h3>Развитие</h3>
+          <p>Постоянный рост и работа над собой.</p>
+        </div>
+        <div class="adv reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5a3 3 0 0 1 0 6M21 20c0-2.6-1.6-4.8-4-5.7"/></svg></div>
+          <h3>Сообщество</h3>
+          <p>Команда, поддержка и уважительная атмосфера.</p>
+        </div>
+        <div class="adv reveal">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
+          <h3>Результат</h3>
+          <p>Движение от первых шагов к личным победам.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ФИНАЛЬНЫЙ CTA ================= -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Готов стать <span class="r">сильнее?</span></h2>
+        <p>Запишись на первую тренировку и познакомься с клубом.</p>
+        <a class="btn btn-primary" href="tel:+79786986170">
+          Записаться на тренировку
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КОНТАКТЫ ================= -->
+  <section class="section" id="contacts" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="kicker">Как нас найти</div>
+        <h2>Контакты</h2>
+      </div>
+      <div class="contacts-grid">
+        <div class="reveal">
+          <div class="contact-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <div>
+              <div class="label">Адрес</div>
+              <div class="value">г. Севастополь, пр-т Генерала Острякова, 166Б</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div>
+            <div>
+              <div class="label">Телефон</div>
+              <a class="value" href="tel:+79786986170">8 978 698-61-70</a>
+            </div>
+          </div>
+        </div>
+        <div class="map-card reveal">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=33.524192%2C44.563857&z=17&pt=33.524192%2C44.563857%2Cpm2grm"
+            loading="lazy" title="Карта: Севастополь, проспект Генерала Острякова, 166Б"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="ALLIANCE">
+          <img src="assets/logo.jpg" alt="Логотип клуба ALLIANCE">
+          <span>
+            <span class="wordmark">ALLI<span class="r">ANCE</span></span>
+            <span class="sub">клуб смешанных<br>единоборств</span>
+          </span>
+        </a>
+        <p>Клуб смешанных единоборств для детей и взрослых. Тренировки, которые меняют тело, характер и жизнь.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4>
+        <a href="#directions">Направления</a>
+        <a href="#coaches">Тренеры</a>
+        <a href="#schedule">Расписание</a>
+        <a href="#about">О клубе</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+79786986170">8 978 698-61-70</a>
+        <p>г. Севастополь,<br>пр-т Генерала Острякова, 166Б</p>
+      </div>
+      <div class="footer-col">
+        <h4>Мы в соцсетях</h4>
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/alliance_sev?igsh=MWwyMjlzaGU5cHhzdg==" target="_blank" rel="noopener" aria-label="Instagram клуба ALLIANCE">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+            <span>Instagram клуба<small>@alliance_sev</small></span>
+          </a>
+          <a class="social-link" href="https://www.instagram.com/zograb_oganyan?igsh=cG9neG5nZWhrMWFs" target="_blank" rel="noopener" aria-label="Instagram тренера Зограба Оганяна">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+            <span>Зограб Оганян<small>@zograb_oganyan</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> <span class="r">ALLIANCE</span> · Клуб смешанных единоборств</span>
+      <span>Севастополь</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // sticky header border on scroll
+  var header = document.getElementById('siteHeader');
+  var onScroll = function(){ header.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // burger / mobile menu
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('navMobile');
+  var setMenu = function(open){
+    menu.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  };
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setMenu(false); });
+
+  // hero photo: show only if the file actually exists
+  var hp = document.getElementById('heroPhoto');
+  if(hp){
+    hp.addEventListener('load', function(){ hp.style.display='block'; });
+    hp.addEventListener('error', function(){ hp.remove(); });
+    if(hp.complete && hp.naturalWidth>0){ hp.style.display='block'; }
+  }
+
+  // schedule tabs
+  var sTabs = document.querySelectorAll('.sched-tab');
+  var sPanels = document.querySelectorAll('.sched-panel');
+  sTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var d = tab.dataset.disc;
+      sTabs.forEach(function(t){ t.classList.toggle('active', t===tab); });
+      sPanels.forEach(function(p){ p.classList.toggle('active', p.dataset.disc===d); });
+    });
+  });
+
+  // reveal on scroll
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.14});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
